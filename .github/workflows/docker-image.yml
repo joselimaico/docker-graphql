@@ -37,19 +37,19 @@ jobs:
         echo "Fin del login"
         echo "version: $NEW_VERSION !!!!!"
 
-    # - name: Build Docker Image
-    #   env:
-    #     NEW_VERSION: ${{ steps.version.outputs.version }}
-    #   run: |
-    #     docker build --tag docker77796/docker-graphql:$NEW_VERSION .
-    #     docker build --tag docker77796/docker-graphql:latest .
+    - name: Build Docker Image
+      env:
+        NEW_VERSION: ${{ steps.version.outputs.version }}
+      run: |
+        docker build --tag docker77796/docker-graphql:$NEW_VERSION .
+        docker build --tag docker77796/docker-graphql:latest .
 
-    # - name: Push Docker Image
-    #   env:
-    #     NEW_VERSION: ${{ steps.version.outputs.version }}
-    #   run: |
-    #     docker push docker77796/docker-graphql:$NEW_VERSION
-    #     docker push docker77796/docker-graphql:latest
+    - name: Push Docker Image
+      env:
+        NEW_VERSION: ${{ steps.version.outputs.version }}
+      run: |
+        docker push docker77796/docker-graphql:$NEW_VERSION
+        docker push docker77796/docker-graphql:latest
     
     # - name: Build the Docker image
     #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
